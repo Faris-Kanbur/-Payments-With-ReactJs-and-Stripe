@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import shirt from "./assets/shirt.png";
+import { StripeContainer } from "./components/StripeContainer";
 
 function App() {
+  const [showItem, setShowItem] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>The T-shirt Store</h1>
+      {showItem ? (
+        <StripeContainer />
+      ) : (
+        <>
+          <h3>$23.99</h3>
+          <div>
+            <img src={shirt} alt="shirt" />
+            <h1>KAFT: T-Shirts and Design Products</h1>
+          </div>
+          <button onClick={() => setShowItem(true)}>Purchase T-Shirts</button>
+        </>
+      )}
     </div>
   );
 }
